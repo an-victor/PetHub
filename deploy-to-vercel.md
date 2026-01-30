@@ -25,22 +25,27 @@ Este plano detalha as etapas para colocar o PetHub online através da Vercel, ga
 - [ ] Push do código para o GitHub.
 
 ### Fase 2: Configuração na Vercel
-- [ ] Conectar conta do GitHub à Vercel.
-- [ ] Importar o projeto `PetHub`.
-- [ ] **Configurar Variáveis de Ambiente na Vercel**:
+- [x] Conectar conta do GitHub à Vercel.
+- [x] Importar o projeto `PetHub`.
+- [x] **Configurar Variáveis de Ambiente na Vercel**:
     - `VITE_SUPABASE_URL`
     - `VITE_SUPABASE_ANON_KEY`
-- [ ] Iniciar o Deploy.
+- [x] Iniciar o Deploy.
 
 ### Fase 3: Verificação e PWA
-- [ ] Validar se o site carrega corretamente na URL `https://pethub-....vercel.app`.
-- [ ] Testar acesso mobile.
-- [ ] Verificar manifesto PWA e Service Worker.
+- [x] Validar se o site carrega corretamente.
+- [x] Testar acesso mobile.
+- [x] Verificar manifesto PWA e Service Worker.
+
+## 🟢 Status Atual: EM TESTES (Homologação)
+O projeto foi deployado com sucesso na Vercel. As variáveis de ambiente foram corrigidas (VITE_CLERK_PUBLISHABLE_KEY).
+O usuário está realizando testes funcionais no dispositivo móvel.
 
 ## 🚦 Critérios de Sucesso
-1. App acessível via URL pública.
-2. Login/Cadastro (Supabase) funcionando no ambiente de produção.
-3. Opção "Instalar App" disponível no navegador mobile.
+1. [x] App acessível via URL pública.
+2. [x] Login/Cadastro (Clerk) funcionando.
+3. [x] Conexão com Supabase ativa.
+4. [ ] Feedback dos testes mobile aprovado.
 
 ---
 **Nota:** A Vercel detecta automaticamente o Vite e configura os comandos de build.

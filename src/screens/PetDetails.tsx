@@ -7,7 +7,7 @@ import { getTreatmentsByPet } from '@/src/data'; // Keeping this static for now 
 const PetDetails: React.FC = () => {
     const navigate = useNavigate();
     const { id } = useParams<{ id: string }>();
-    const { setIsVaccineFormOpen, isVaccineFormOpen, setIsPetFormOpen } = useAppContext();
+    const { setIsVaccineFormOpen, isVaccineFormOpen, setIsPetFormOpen, isTreatmentFormOpen, setIsTreatmentFormOpen } = useAppContext();
     const [showVaccines, setShowVaccines] = useState(false);
     const [showTreatments, setShowTreatments] = useState(true); // Default open for visibility
     const [vaccineTab, setVaccineTab] = useState<'upcoming' | 'history'>('upcoming');
@@ -31,7 +31,8 @@ const PetDetails: React.FC = () => {
         return vaccines.filter(v => v.status === 'applied');
     }, [vaccines]);
 
-    const treatments = useMemo(() => getTreatmentsByPet(id || ''), [id]);
+    // Update treatments when form closes (implying potential new data)
+    const treatments = useMemo(() => OfflineService.getTreatmentsByPet(id || ''), [id, isTreatmentFormOpen]);
 
     // Local state for avatar to allow immediate preview update
     const [avatar, setAvatar] = useState(pet?.avatar || '');
@@ -353,7 +354,15 @@ const PetDetails: React.FC = () => {
                             {treatments.length === 0 ? (
                                 <div className="text-center py-4">
                                     <p className="text-text-muted text-sm">Nenhum tratamento recorrente.</p>
-                                    <button className="text-indigo-500 font-bold text-sm mt-2">Adicionar Tratamento</button>
+                                    <button
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            setIsTreatmentFormOpen(true);
+                                        }}
+                                        className="text-indigo-500 font-bold text-sm mt-2"
+                                    >
+                                        Adicionar Tratamento
+                                    </button>
                                 </div>
                             ) : (
                                 treatments.map((t) => {
@@ -404,7 +413,13 @@ const PetDetails: React.FC = () => {
                                 })
                             )}
 
-                            <button className="w-full py-3 mt-2 rounded-xl border border-indigo-200 dark:border-indigo-800 text-indigo-600 dark:text-indigo-400 font-semibold text-sm hover:bg-indigo-50 dark:hover:bg-indigo-900/20 transition-colors flex items-center justify-center gap-2">
+                            <button
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    setIsTreatmentFormOpen(true);
+                                }}
+                                className="w-full py-3 mt-2 rounded-xl border border-indigo-200 dark:border-indigo-800 text-indigo-600 dark:text-indigo-400 font-semibold text-sm hover:bg-indigo-50 dark:hover:bg-indigo-900/20 transition-colors flex items-center justify-center gap-2"
+                            >
                                 <span className="material-symbols-outlined">add_circle</span>
                                 Novo Tratamento
                             </button>

@@ -39,7 +39,7 @@ import PointsHistory from './screens/PointsHistory';
 
 import Premium from './screens/Premium';
 import { SideMenu, BottomNav } from '@/src/components/layout';
-import { PetForm, VaccineForm } from '@/src/components/forms';
+import { PetForm, VaccineForm, TreatmentForm } from '@/src/components/forms';
 import { GamificationFeedback } from '@/src/components/gamification';
 import { PrivateRoute } from '@/src/components/auth';
 import { GamificationProvider } from '@/src/contexts';
@@ -74,6 +74,8 @@ interface AppContextType {
   setIsPetFormOpen: (value: boolean) => void;
   isVaccineFormOpen: boolean;
   setIsVaccineFormOpen: (value: boolean) => void;
+  isTreatmentFormOpen: boolean;
+  setIsTreatmentFormOpen: (value: boolean) => void;
   isAuthenticated: boolean;
   setIsAuthenticated: (value: boolean) => void;
 }
@@ -87,6 +89,8 @@ export const AppContext = createContext<AppContextType>({
   setIsPetFormOpen: () => { },
   isVaccineFormOpen: false,
   setIsVaccineFormOpen: () => { },
+  isTreatmentFormOpen: false,
+  setIsTreatmentFormOpen: () => { },
   isAuthenticated: true,
   setIsAuthenticated: () => { },
 });
@@ -101,7 +105,7 @@ export const DarkModeContext = createContext<{
 
 
 const AppContent: React.FC = () => {
-  const { isMenuOpen, setIsMenuOpen, isPetFormOpen, setIsPetFormOpen, isVaccineFormOpen, setIsVaccineFormOpen } = useAppContext();
+  const { isMenuOpen, setIsMenuOpen, isPetFormOpen, setIsPetFormOpen, isVaccineFormOpen, setIsVaccineFormOpen, isTreatmentFormOpen, setIsTreatmentFormOpen } = useAppContext();
   const { user } = useUser();
 
   const handlePetSubmit = async (data: Record<string, any>) => {
@@ -181,6 +185,11 @@ const AppContent: React.FC = () => {
             onClose={() => setIsVaccineFormOpen(false)}
             onSubmit={handleVaccineSubmit}
           />
+
+          <TreatmentForm
+            isOpen={isTreatmentFormOpen}
+            onClose={() => setIsTreatmentFormOpen(false)}
+          />
         </div>
       </div>
     </>
@@ -192,6 +201,7 @@ const App: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isPetFormOpen, setIsPetFormOpen] = useState(false);
   const [isVaccineFormOpen, setIsVaccineFormOpen] = useState(false);
+  const [isTreatmentFormOpen, setIsTreatmentFormOpen] = useState(false);
 
   // Clerk Integration
   const { isSignedIn, isLoaded } = useAuth();
@@ -233,6 +243,8 @@ const App: React.FC = () => {
     setIsPetFormOpen,
     isVaccineFormOpen,
     setIsVaccineFormOpen,
+    isTreatmentFormOpen,
+    setIsTreatmentFormOpen,
     isAuthenticated,
     setIsAuthenticated
   };
