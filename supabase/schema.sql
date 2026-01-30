@@ -81,6 +81,35 @@ create policy "Users can delete vaccines of own pets" on public.vaccines for del
   exists (select 1 from public.pets where pets.id = vaccines.pet_id and pets.owner_id = auth.uid())
 );
 
+-- 4. TREATMENTS (Antipulgas, Vermífugos, Meds)
+create table public.treatments (
+  id uuid default uuid_generate_v4() primary key,
+  pet_id uuid references public.pets(id) on delete cascade not null,
+  type text not null check (type in ('flea', 'worm', 'medication')),
+  name text not null,
+  frequency_days integer default 30,
+  last_date date not null,
+  next_date date not null,
+  status text default 'ok',
+  created_at timestamptz default now()
+);
+
+-- RLS: Treatments
+alter table public.treatments enable row level security;
+
+create policy "Users can view treatments of own pets" on public.treatments for select using (
+  exists (select 1 from public.pets where pets.id = treatments.pet_id and pets.owner_id = auth.uid())
+);
+create policy "Users can insert treatments for own pets" on public.treatments for insert with check (
+  exists (select 1 from public.pets where pets.id = treatments.pet_id and pets.owner_id = auth.uid())
+);
+create policy "Users can update treatments of own pets" on public.treatments for update using (
+  exists (select 1 from public.pets where pets.id = treatments.pet_id and pets.owner_id = auth.uid())
+);
+create policy "Users can delete treatments of own pets" on public.treatments for delete using (
+  exists (select 1 from public.pets where pets.id = treatments.pet_id and pets.owner_id = auth.uid())
+);
+
 -- 4. GAMIFICATION STATS
 create table public.gamification_stats (
   user_id uuid references public.profiles(id) primary key,
