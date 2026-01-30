@@ -29,3 +29,24 @@ dist-ssr
 .env.production
 .env.local
 .env.*.local
+
+# Backups and Secondary Projects
+_backup_design_v1
+_backup_design_v2_clean
+PetHub - AIstudio
+PetHub - Correções 1.1
+PetHub - Visual_1.2
+PetHub - Visual_1.3
+PetHub - Visual_1.4
+PetHub - Visual_1.5
+PetHub - Viusal_1.1
+doc gamificação
+PetHub - AIstudio
+metadata.json
+CUSTOS_E_VIABILIDADE.md
+PET_HUB_PRD_MODEL.md
+REVISION_REPORT.md
+deploy-to-vercel.md
+PRD.md
+DEPLOY_GUIDE.md
+verify_db.js
