@@ -508,83 +508,21 @@ export const badges: Badge[] = [
 
 export const currentUserLevel: UserLevel = {
     userId: 'd3d1f1e1-e1e1-4e1e-8e1e-d1d1f1e1d1d1',
-    currentLevel: 3,
-    levelName: 'Adulto II',
-    totalPoints: 1750,
-    availablePoints: 1250,
-    spentPoints: 500,
-    pointsToNextLevel: 1250,
-    progressPercent: 50,
-    lastLevelUpAt: '2026-01-10T14:00:00Z',
-    streakDays: 12,
-    lastActivityAt: '2026-01-25T02:30:00Z',
+    currentLevel: 1,
+    levelName: 'Filhote',
+    totalPoints: 0,
+    availablePoints: 0,
+    spentPoints: 0,
+    pointsToNextLevel: 800, // Level 2 requires 800
+    progressPercent: 0,
+    lastLevelUpAt: '',
+    streakDays: 0,
+    lastActivityAt: '',
 };
 
-export const currentUserMissions: UserMission[] = [
-    {
-        id: 'user-mission-1',
-        missionId: 'mission-vacina-em-dia',
-        userId: 'user-1',
-        progress: [{ requirementIndex: 0, currentCount: 2, targetCount: 3, completed: false }],
-        startedAt: '2026-01-01T00:00:00Z',
-        completedAt: null,
-        rewardClaimed: false,
-    },
-    {
-        id: 'user-mission-2',
-        missionId: 'mission-educacao',
-        userId: 'user-1',
-        progress: [{ requirementIndex: 0, currentCount: 18, targetCount: 30, completed: false }],
-        startedAt: '2026-01-05T00:00:00Z',
-        completedAt: null,
-        rewardClaimed: false,
-    },
-];
+export const currentUserMissions: UserMission[] = [];
 
-export const recentTransactions: PointTransaction[] = [
-    {
-        id: 'tx-1',
-        userId: 'user-1',
-        action: 'registrar_vacina',
-        points: 50,
-        multiplier: 1.0,
-        validated: true,
-        metadata: {
-            timestamp: '2026-01-24T10:00:00Z',
-            petId: 'pet-1',
-            clinicId: 'clinic-1',
-        },
-        createdAt: '2026-01-24T10:00:00Z',
-        status: 'validated',
-    },
-    {
-        id: 'tx-2',
-        userId: 'user-1',
-        action: 'ler_dica',
-        points: 5,
-        multiplier: 1.0,
-        validated: true,
-        metadata: {
-            timestamp: '2026-01-24T15:30:00Z',
-        },
-        createdAt: '2026-01-24T15:30:00Z',
-        status: 'validated',
-    },
-    {
-        id: 'tx-3',
-        userId: 'user-1',
-        action: 'marcar_banho',
-        points: 25,
-        multiplier: 1.0,
-        validated: true,
-        metadata: {
-            timestamp: '2026-01-23T11:00:00Z',
-            clinicId: 'petshop-1',
-        },
-        createdAt: '2026-01-23T11:00:00Z',
-        status: 'validated',
-    },
-];
+export const recentTransactions: PointTransaction[] = [];
 
 // ============================================
 // HELPERS

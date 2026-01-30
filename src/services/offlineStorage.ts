@@ -15,12 +15,8 @@ export const OfflineService = {
     getVaccines: (): Vaccine[] => {
         const localData = localStorage.getItem(STORAGE_KEYS.VACCINES);
         const localVaccines: Vaccine[] = localData ? JSON.parse(localData) : [];
-        // Determine uniqueness by ID to allow overriding static data if needed (though usually we append)
-        // For simplicity, we just concatenate unique IDs.
-        const allVaccines = [...staticVaccines, ...localVaccines];
-        // Deduplicate based on ID just in case
-        const uniqueVaccines = Array.from(new Map(allVaccines.map(item => [item.id, item])).values());
-        return uniqueVaccines;
+        // Removed staticVaccines to ensure clean state for new users
+        return localVaccines;
     },
 
     getVaccinesByPet: (petId: string): Vaccine[] => {
@@ -39,8 +35,8 @@ export const OfflineService = {
     getPets: (): Pet[] => {
         const localData = localStorage.getItem(STORAGE_KEYS.PETS);
         const localPets: Pet[] = localData ? JSON.parse(localData) : [];
-        const allPets = [...staticPets, ...localPets];
-        return Array.from(new Map(allPets.map(item => [item.id, item])).values());
+        // Removed staticPets to ensure clean state
+        return localPets;
     },
 
     addPet: (pet: Pet) => {
@@ -59,20 +55,14 @@ export const OfflineService = {
         const index = pets.findIndex(p => p.id === oldId);
         if (index !== -1) {
             pets[index] = newPet;
-            // Filter unique by ID just in case
-            const uniquePets = Array.from(new Map(pets.map(item => [item.id, item])).values());
-            // Filter out static data (we only save dynamic/local data to LS)
-            const localOnly = uniquePets.filter(p => !staticPets.find(sp => sp.id === p.id));
-            localStorage.setItem(STORAGE_KEYS.PETS, JSON.stringify(localOnly));
+            localStorage.setItem(STORAGE_KEYS.PETS, JSON.stringify(pets));
         }
     },
 
     removePet: (id: string) => {
         const pets = OfflineService.getPets();
         const filtered = pets.filter(p => p.id !== id);
-        // Filter out static data
-        const localOnly = filtered.filter(p => !staticPets.find(sp => sp.id === p.id));
-        localStorage.setItem(STORAGE_KEYS.PETS, JSON.stringify(localOnly));
+        localStorage.setItem(STORAGE_KEYS.PETS, JSON.stringify(filtered));
     },
 
     updateVaccine: (oldId: string, newVaccine: Vaccine) => {
@@ -80,24 +70,22 @@ export const OfflineService = {
         const index = vaccines.findIndex(v => v.id === oldId);
         if (index !== -1) {
             vaccines[index] = newVaccine;
-            const localOnly = vaccines.filter(v => !staticVaccines.find(sv => sv.id === v.id));
-            localStorage.setItem(STORAGE_KEYS.VACCINES, JSON.stringify(localOnly));
+            localStorage.setItem(STORAGE_KEYS.VACCINES, JSON.stringify(vaccines));
         }
     },
 
     removeVaccine: (id: string) => {
         const vaccines = OfflineService.getVaccines();
         const filtered = vaccines.filter(v => v.id !== id);
-        const localOnly = filtered.filter(v => !staticVaccines.find(sv => sv.id === v.id));
-        localStorage.setItem(STORAGE_KEYS.VACCINES, JSON.stringify(localOnly));
+        localStorage.setItem(STORAGE_KEYS.VACCINES, JSON.stringify(filtered));
     },
 
     // --- TREATMENTS ---
     getTreatments: (): Treatment[] => {
         const localData = localStorage.getItem(STORAGE_KEYS.TREATMENTS);
         const localTreatments: Treatment[] = localData ? JSON.parse(localData) : [];
-        const allTreatments = [...staticTreatments, ...localTreatments];
-        return Array.from(new Map(allTreatments.map(item => [item.id, item])).values());
+        // Removed staticTreatments to ensure clean state
+        return localTreatments;
     },
 
     getTreatmentsByPet: (petId: string): Treatment[] => {
