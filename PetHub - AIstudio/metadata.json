@@ -1,0 +1,9 @@
+{
+  "name": "MyPet - O App Completo para seu Pet",
+  "description": "Uma plataforma completa para gerenciamento de saúde, nutrição, adoção e serviços para pets, com interface vibrante e intuitiva.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ]
+}

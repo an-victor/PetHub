@@ -1,0 +1,283 @@
+import { useState } from "react";
+import { Header } from "@/components/layout/Header";
+import { BottomNav } from "@/components/navigation/BottomNav";
+import { PetCard, PetMiniCard } from "@/components/pet/PetCard";
+import { QuickAction, QuickActionGrid } from "@/components/actions/QuickAction";
+import { AppointmentCard } from "@/components/appointments/AppointmentCard";
+import { ServiceCard } from "@/components/services/ServiceCard";
+import { AdoptionCard } from "@/components/adoption/AdoptionCard";
+import { ProductCard } from "@/components/shop/ProductCard";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { 
+  Stethoscope, 
+  ShoppingBag, 
+  Heart, 
+  Scissors, 
+  GraduationCap, 
+  MapPin,
+  Plus,
+  ChevronRight,
+  PawPrint
+} from "lucide-react";
+
+import dogAvatar from "@/assets/dog-avatar.jpg";
+import catAvatar from "@/assets/cat-avatar.jpg";
+import vetService from "@/assets/vet-service.jpg";
+import petsTogether from "@/assets/pets-together.jpg";
+
+// Mock data
+const mockPets = [
+  {
+    id: "1",
+    name: "Max",
+    type: "dog" as const,
+    breed: "Golden Retriever",
+    age: "3 anos",
+    imageUrl: dogAvatar,
+    nextAppointment: "15 Jan",
+    vaccinesDue: 1,
+  },
+  {
+    id: "2",
+    name: "Luna",
+    type: "cat" as const,
+    breed: "Siamês",
+    age: "2 anos",
+    imageUrl: catAvatar,
+    nextAppointment: "22 Jan",
+    vaccinesDue: 0,
+  },
+];
+
+const mockAppointments = [
+  {
+    id: "1",
+    petName: "Max",
+    petImage: dogAvatar,
+    type: "Consulta de Rotina",
+    professional: "Dr. Carlos Silva",
+    location: "Pet Care Clínica Veterinária",
+    date: "15/01/2026",
+    time: "14:30",
+    status: "confirmed" as const,
+  },
+];
+
+const mockServices = [
+  {
+    id: "1",
+    name: "Pet Care Clínica",
+    type: "Clínica Veterinária",
+    rating: 4.8,
+    reviewCount: 234,
+    imageUrl: vetService,
+    distance: "1.2 km",
+    isOpen: true,
+    specialties: ["Consultas", "Vacinas", "Cirurgias"],
+  },
+];
+
+const mockAdoption = [
+  {
+    id: "1",
+    name: "Thor",
+    type: "dog" as const,
+    breed: "Vira-lata",
+    age: "8 meses",
+    gender: "Macho",
+    imageUrl: petsTogether,
+    location: "São Paulo, SP",
+    postedDate: "há 3 dias",
+    description: "Thor é um filhote muito brincalhão e carinhoso, procurando uma família para chamar de sua!",
+    isLiked: false,
+  },
+];
+
+const mockProducts = [
+  {
+    id: "1",
+    name: "Ração Premium para Cães Adultos 15kg",
+    description: "Ração super premium para cães adultos",
+    price: 189.90,
+    originalPrice: 229.90,
+    imageUrl: "https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?w=400&h=300&fit=crop",
+    rating: 4.7,
+    reviewCount: 156,
+    category: "Alimentação",
+    inStock: true,
+  },
+];
+
+export default function Index() {
+  const [activeTab, setActiveTab] = useState("home");
+  const [selectedPetId, setSelectedPetId] = useState(mockPets[0].id);
+
+  return (
+    <div className="min-h-screen bg-background pb-24">
+      <Header 
+        userName="Maria" 
+        notificationCount={3}
+      />
+
+      <main className="p-4 max-w-lg mx-auto space-y-6">
+        {/* Hero Section */}
+        <Card variant="coral" className="overflow-hidden">
+          <CardContent className="p-5">
+            <div className="flex items-center gap-4">
+              <div className="flex-1">
+                <h2 className="text-xl font-bold text-foreground mb-1">
+                  Cuide do seu pet com amor 🐾
+                </h2>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Tudo que seu pet precisa em um só lugar
+                </p>
+                <Button variant="hero" size="sm">
+                  <Plus className="w-4 h-4" />
+                  Adicionar Pet
+                </Button>
+              </div>
+              <PawPrint className="w-20 h-20 text-coral/20" />
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* My Pets Section */}
+        <section>
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-lg font-bold text-foreground">Meus Pets</h2>
+            <Button variant="ghost" size="sm" className="text-primary">
+              Ver todos
+              <ChevronRight className="w-4 h-4 ml-1" />
+            </Button>
+          </div>
+          
+          {/* Pet Selection */}
+          <div className="flex gap-3 mb-4 overflow-x-auto pb-2 -mx-4 px-4">
+            {mockPets.map((pet) => (
+              <PetMiniCard
+                key={pet.id}
+                pet={pet}
+                isSelected={selectedPetId === pet.id}
+                onClick={() => setSelectedPetId(pet.id)}
+              />
+            ))}
+            <button className="flex items-center justify-center w-12 h-[72px] rounded-2xl border-2 border-dashed border-border hover:border-primary hover:bg-coral-light transition-colors flex-shrink-0">
+              <Plus className="w-5 h-5 text-muted-foreground" />
+            </button>
+          </div>
+
+          {/* Pet Cards */}
+          <div className="grid grid-cols-2 gap-3">
+            {mockPets.map((pet) => (
+              <PetCard key={pet.id} pet={pet} />
+            ))}
+          </div>
+        </section>
+
+        {/* Quick Actions */}
+        <section>
+          <h2 className="text-lg font-bold text-foreground mb-4">Serviços</h2>
+          <QuickActionGrid columns={4}>
+            <QuickAction 
+              icon={Stethoscope} 
+              label="Veterinário" 
+              color="coral"
+            />
+            <QuickAction 
+              icon={ShoppingBag} 
+              label="Loja" 
+              color="teal"
+            />
+            <QuickAction 
+              icon={Heart} 
+              label="Adoção" 
+              color="rose"
+            />
+            <QuickAction 
+              icon={Scissors} 
+              label="Banho & Tosa" 
+              color="lavender"
+            />
+            <QuickAction 
+              icon={GraduationCap} 
+              label="Treinamento" 
+              color="mint"
+            />
+            <QuickAction 
+              icon={MapPin} 
+              label="Clínicas" 
+              color="sunshine"
+            />
+          </QuickActionGrid>
+        </section>
+
+        {/* Upcoming Appointments */}
+        <section>
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-lg font-bold text-foreground">Próximas Consultas</h2>
+            <Button variant="ghost" size="sm" className="text-primary">
+              Ver agenda
+              <ChevronRight className="w-4 h-4 ml-1" />
+            </Button>
+          </div>
+          <div className="space-y-3">
+            {mockAppointments.map((appointment) => (
+              <AppointmentCard key={appointment.id} appointment={appointment} />
+            ))}
+          </div>
+        </section>
+
+        {/* Nearby Services */}
+        <section>
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-lg font-bold text-foreground">Perto de Você</h2>
+            <Button variant="ghost" size="sm" className="text-primary">
+              Ver mapa
+              <ChevronRight className="w-4 h-4 ml-1" />
+            </Button>
+          </div>
+          <div className="grid gap-3">
+            {mockServices.map((service) => (
+              <ServiceCard key={service.id} provider={service} />
+            ))}
+          </div>
+        </section>
+
+        {/* Adoption Section */}
+        <section>
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-lg font-bold text-foreground">Adote um Amigo</h2>
+            <Button variant="ghost" size="sm" className="text-primary">
+              Ver todos
+              <ChevronRight className="w-4 h-4 ml-1" />
+            </Button>
+          </div>
+          <div className="grid gap-3">
+            {mockAdoption.map((pet) => (
+              <AdoptionCard key={pet.id} pet={pet} />
+            ))}
+          </div>
+        </section>
+
+        {/* Shop Section */}
+        <section>
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-lg font-bold text-foreground">Loja Pet</h2>
+            <Button variant="ghost" size="sm" className="text-primary">
+              Ver loja
+              <ChevronRight className="w-4 h-4 ml-1" />
+            </Button>
+          </div>
+          <div className="grid grid-cols-2 gap-3">
+            {mockProducts.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        </section>
+      </main>
+
+      <BottomNav activeTab={activeTab} onTabChange={setActiveTab} />
+    </div>
+  );
+}

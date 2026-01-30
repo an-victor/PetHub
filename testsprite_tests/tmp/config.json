@@ -1,0 +1,16 @@
+{
+  "status": "commited",
+  "type": "frontend",
+  "scope": "codebase",
+  "localEndpoint": "http://localhost:3000",
+  "executionArgs": {
+    "projectName": "PetHub",
+    "projectPath": "f:\\PROJETOS Antigravity\\PetHub",
+    "testIds": [],
+    "additionalInstruction": "Run tests again with the fixed robust authentication handling. Focus on verifying navigation and layout rendering now that the crash should be resolved.",
+    "envs": {
+      "API_KEY": "sk-user-KrIjbWaUQsfb5VO_4auh5iPoc58v3pLepsCf4AZ-LKsTKxAtaL32Oo1IBj9tArGJ83esc7YPXa60reielZWuE4533JmYd7eTFPb5il0c4-k8WKkSWBisUcCDvVv-wkWBQMs"
+    }
+  },
+  "proxy": "http://6fd70ed2-4ebe-4d3b-b202-22296f1319ba:S2EeG9CVPgDwu5ayc7yWz17lXyfYI7MN@tun.testsprite.com:8080"
+}

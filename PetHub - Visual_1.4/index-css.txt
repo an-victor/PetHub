@@ -1,0 +1,185 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap');
+
+@layer base {
+  :root {
+    /* Warm, friendly pet app palette */
+    --background: 30 50% 98%;
+    --foreground: 25 30% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 25 30% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 25 30% 15%;
+
+    /* Warm coral/orange - energetic and friendly */
+    --primary: 16 85% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Soft teal - calm and trustworthy */
+    --secondary: 174 42% 65%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Cream/beige muted tones */
+    --muted: 35 30% 94%;
+    --muted-foreground: 25 15% 45%;
+
+    /* Mint accent */
+    --accent: 160 45% 90%;
+    --accent-foreground: 160 45% 25%;
+
+    /* Warning/destructive for alerts */
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Soft warm borders */
+    --border: 30 20% 90%;
+    --input: 30 20% 90%;
+    --ring: 16 85% 60%;
+
+    --radius: 1rem;
+
+    /* Custom pet app colors */
+    --coral: 16 85% 60%;
+    --coral-light: 16 85% 95%;
+    --teal: 174 42% 65%;
+    --teal-light: 174 42% 92%;
+    --sunshine: 42 95% 65%;
+    --sunshine-light: 42 95% 92%;
+    --lavender: 270 50% 70%;
+    --lavender-light: 270 50% 95%;
+    --mint: 160 45% 65%;
+    --mint-light: 160 45% 92%;
+    --rose: 350 70% 65%;
+    --rose-light: 350 70% 95%;
+
+    /* Gradients */
+    --gradient-coral: linear-gradient(135deg, hsl(16 85% 60%), hsl(25 90% 55%));
+    --gradient-teal: linear-gradient(135deg, hsl(174 42% 65%), hsl(180 45% 55%));
+    --gradient-sunset: linear-gradient(135deg, hsl(16 85% 60%), hsl(350 70% 65%));
+    --gradient-warm: linear-gradient(180deg, hsl(30 50% 98%), hsl(35 40% 95%));
+
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -4px hsl(25 30% 15% / 0.08);
+    --shadow-medium: 0 8px 30px -6px hsl(25 30% 15% / 0.12);
+    --shadow-glow-coral: 0 8px 24px -6px hsl(16 85% 60% / 0.35);
+    --shadow-glow-teal: 0 8px 24px -6px hsl(174 42% 65% / 0.35);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 25 25% 8%;
+    --foreground: 30 20% 95%;
+
+    --card: 25 20% 12%;
+    --card-foreground: 30 20% 95%;
+
+    --popover: 25 20% 12%;
+    --popover-foreground: 30 20% 95%;
+
+    --primary: 16 85% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 174 42% 50%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 25 15% 18%;
+    --muted-foreground: 30 15% 60%;
+
+    --accent: 160 35% 20%;
+    --accent-foreground: 160 45% 85%;
+
+    --destructive: 0 62.8% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 25 15% 20%;
+    --input: 25 15% 20%;
+    --ring: 16 85% 60%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Nunito', sans-serif;
+  }
+}
+
+@layer utilities {
+  .gradient-coral {
+    background: var(--gradient-coral);
+  }
+  
+  .gradient-teal {
+    background: var(--gradient-teal);
+  }
+  
+  .gradient-sunset {
+    background: var(--gradient-sunset);
+  }
+  
+  .gradient-warm {
+    background: var(--gradient-warm);
+  }
+  
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+  
+  .shadow-medium {
+    box-shadow: var(--shadow-medium);
+  }
+  
+  .shadow-glow-coral {
+    box-shadow: var(--shadow-glow-coral);
+  }
+  
+  .shadow-glow-teal {
+    box-shadow: var(--shadow-glow-teal);
+  }
+
+  .bg-coral { background-color: hsl(var(--coral)); }
+  .bg-coral-light { background-color: hsl(var(--coral-light)); }
+  .bg-teal { background-color: hsl(var(--teal)); }
+  .bg-teal-light { background-color: hsl(var(--teal-light)); }
+  .bg-sunshine { background-color: hsl(var(--sunshine)); }
+  .bg-sunshine-light { background-color: hsl(var(--sunshine-light)); }
+  .bg-lavender { background-color: hsl(var(--lavender)); }
+  .bg-lavender-light { background-color: hsl(var(--lavender-light)); }
+  .bg-mint { background-color: hsl(var(--mint)); }
+  .bg-mint-light { background-color: hsl(var(--mint-light)); }
+  .bg-rose { background-color: hsl(var(--rose)); }
+  .bg-rose-light { background-color: hsl(var(--rose-light)); }
+
+  .text-coral { color: hsl(var(--coral)); }
+  .text-teal { color: hsl(var(--teal)); }
+  .text-sunshine { color: hsl(var(--sunshine)); }
+  .text-lavender { color: hsl(var(--lavender)); }
+  .text-mint { color: hsl(var(--mint)); }
+  .text-rose { color: hsl(var(--rose)); }
+}

@@ -1,0 +1,60 @@
+Descrição do Novo Design (Prompt para Stitch/Designer)
+Visão Geral: Redesenhar a tela "Home" atual (image_1.png) aplicando rigorosamente a linguagem visual, paleta de cores, tipografia e estrutura de cards da referência (image_0.png). O fundo deve ser o tom bege/off-white suave, com sombras difusas e elementos 3D amigáveis.
+
+Mapeamento de Seções (De -> Para):
+
+Fundo e Estrutura Geral:
+
+Substituir o fundo branco atual pelo fundo bege suave (#F9F8F4) da referência.
+
+Adotar a tipografia limpa e hierarquizada (estilo Poppins/Nunito) da referência.
+
+Cabeçalho (Header):
+
+Conteúdo: Manter "BEM-VINDA Olá, Maria!" e a foto de perfil.
+
+Design: Mover a foto de perfil para o canto superior direito (onde está o sino atualmente). O texto "Olá, Maria!" fica alinhado à esquerda, com "BEM-VINDA" menor acima dele, seguindo o estilo limpo de "Hi Achmad". O ícone de sino pode ficar ao lado da foto ou ser removido para limpar a interface, se preferir.
+
+Título Principal (Hero Title):
+
+Conteúdo: "Seu pet está bem hoje?"
+
+Design: Colocar este título abaixo do cabeçalho. Remover a cor laranja forte do texto "bem hoje" e usar a cor preta/cinza escuro da paleta de referência, talvez usando um peso Bold para destaque, similar ao título do banner da referência.
+
+Nova Seção "Meus Pets" (Substituindo os cards grandes Cães/Gatos):
+
+Conteúdo: Os acessos para "Cães" e "Gatos".
+
+Design (Adaptação crucial): Em vez de dois blocos gigantes coloridos, transforme-os na linha de "Categories" da referência.
+
+Crie um título de seção "Meus Pets" (similar a "Categories").
+
+Abaixo, crie dois cards quadrados pequenos com cantos muito arredondados e fundo amarelo claro suave, exatamente como os cards de "Dogs", "Cats" da referência.
+
+Use ícones 3D fofos de um cachorro e um gato. Abaixo dos ícones, os textos "Cães" e "Gatos".
+
+Hero Banner: "Resumo de Saúde" (O novo destaque):
+
+Conteúdo: O card "IMPORTANTE - Próxima Vacina".
+
+Design: Transforme este card no Banner Principal Gigante (estilo o banner preto da referência).
+
+Use um fundo Laranja Profundo ou Marrom Avermelhado (para manter a identidade da marca, mas no estilo da referência) ou até mesmo o preto se quiser contraste máximo.
+
+O texto "Próxima Vacina" e "Antirrábica..." em branco.
+
+Substituir o ícone plano de vacina por uma ilustração 3D grande e amigável de uma vacina/seringa e frasco no lado direito do banner.
+
+O botão "Ver Detalhes" deve ser reestilizado para combinar com o novo banner (talvez um botão pílula amarelo claro ou branco).
+
+Seção de Ações Rápidas (Serviços):
+
+Conteúdo: Veterinário, Comida, Passeio, Banho.
+
+Design: Manter os ícones circulares, mas adaptá-los ao "Soft UI".
+
+Os círculos devem ter um fundo bege ligeiramente mais claro que o background principal, ou um branco suave, com uma sombra difusa muito leve. Os ícones internos pretos/cinza escuro. Os rótulos abaixo na nova tipografia.
+
+Barra de Navegação Inferior (Bottom Nav):
+
+Design: Atualizar para o estilo da referência: fundo bege/branco limpo, sem sombras duras, com ícones de linha mais modernos e minimalistas para Home, Agenda, Loja, Perfil. A cor do ícone ativo deve ser o laranja da marca ou o amarelo da referência.

@@ -1,0 +1,445 @@
+[
+  {
+    "id": "TC001",
+    "title": "User Registration Success",
+    "description": "Verify that a new user can successfully register using valid credentials and is redirected to the Home screen.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the Registration screen"
+      },
+      {
+        "type": "action",
+        "description": "Input valid email and strong password"
+      },
+      {
+        "type": "action",
+        "description": "Submit the registration form"
+      },
+      {
+        "type": "assertion",
+        "description": "Check user is registered and automatically logged in"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify redirection to the Home screen"
+      }
+    ]
+  },
+  {
+    "id": "TC002",
+    "title": "User Login Success",
+    "description": "Verify that a registered user can successfully log in with correct credentials and land on the Home screen.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the Login screen"
+      },
+      {
+        "type": "action",
+        "description": "Input registered email and correct password"
+      },
+      {
+        "type": "action",
+        "description": "Click the login button"
+      },
+      {
+        "type": "assertion",
+        "description": "Check that login is successful"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify redirection to the Home screen"
+      }
+    ]
+  },
+  {
+    "id": "TC003",
+    "title": "User Login Failure with Incorrect Password",
+    "description": "Verify the system denies access and shows an appropriate error message when an incorrect password is used.",
+    "category": "error handling",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the Login screen"
+      },
+      {
+        "type": "action",
+        "description": "Input registered email and incorrect password"
+      },
+      {
+        "type": "action",
+        "description": "Click login button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that login is denied"
+      },
+      {
+        "type": "assertion",
+        "description": "Check that an error message is displayed indicating invalid credentials"
+      }
+    ]
+  },
+  {
+    "id": "TC004",
+    "title": "Add New Pet",
+    "description": "Verify that a user can add a new pet by entering all required details and the pet is immediately listed on 'My Pets' and Home screen.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Log in and navigate to 'My Pets' screen"
+      },
+      {
+        "type": "action",
+        "description": "Click on 'Add Pet' button"
+      },
+      {
+        "type": "action",
+        "description": "Select pet type, enter name, breed, and birthdate"
+      },
+      {
+        "type": "action",
+        "description": "Save the new pet"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the new pet appears in the 'My Pets' list immediately"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the new pet also appears on the Home screen"
+      }
+    ]
+  },
+  {
+    "id": "TC005",
+    "title": "Pet Data Persistence in LocalStorage and Cloud",
+    "description": "Verify that a newly added pet's data persists in LocalStorage and synchronizes with the Supabase cloud database.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Add a pet as per TC004"
+      },
+      {
+        "type": "action",
+        "description": "Reload the application"
+      },
+      {
+        "type": "assertion",
+        "description": "Check that pet data is still visible in the UI post reload"
+      },
+      {
+        "type": "action",
+        "description": "Simulate offline mode and reload application"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify pet data is retained from LocalStorage during offline usage"
+      },
+      {
+        "type": "action",
+        "description": "Reconnect to network and trigger sync"
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm pet data is successfully synchronized with the Supabase database without data loss"
+      }
+    ]
+  },
+  {
+    "id": "TC006",
+    "title": "Add and View Vaccine Record for a Pet",
+    "description": "Verify that users can add a vaccine record to a pet, view it on the pet's detail page, and receive gamification points upon saving.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to a pet's detail page"
+      },
+      {
+        "type": "action",
+        "description": "Open vaccine records section"
+      },
+      {
+        "type": "action",
+        "description": "Add new vaccine details and save"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the vaccine record appears correctly in the pet's vaccine list"
+      },
+      {
+        "type": "assertion",
+        "description": "Check that gamification points are awarded to the user for adding the record"
+      }
+    ]
+  },
+  {
+    "id": "TC007",
+    "title": "View Global Vaccination History",
+    "description": "Verify that users can view the consolidated vaccination history for all pets on the 'Vaccines' page.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the 'Vaccines' page"
+      },
+      {
+        "type": "assertion",
+        "description": "Ensure the page lists vaccine records aggregated from all user pets"
+      },
+      {
+        "type": "assertion",
+        "description": "Check sorting and filtering of vaccine records if available"
+      }
+    ]
+  },
+  {
+    "id": "TC008",
+    "title": "Track Veterinary Appointments",
+    "description": "Verify that users can add, view, and track veterinary appointments, and appointments appear accurately on the 'Appointments' page.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Go to a pet's details page"
+      },
+      {
+        "type": "action",
+        "description": "Add a new veterinary appointment with date, time, and reason"
+      },
+      {
+        "type": "action",
+        "description": "Save the appointment"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify appointment appears in the pet's appointment list"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to the global 'Appointments' page"
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm the newly added appointment is listed correctly"
+      }
+    ]
+  },
+  {
+    "id": "TC009",
+    "title": "Gamification Points Award and Level Progression",
+    "description": "Verify that the gamification engine accurately awards points for specific user actions, updates user levels, and triggers notifications accordingly.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Perform an action that awards points (e.g., add a vaccine record or veterinary appointment)"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify points are added to the user's gamification score"
+      },
+      {
+        "type": "assertion",
+        "description": "Check if the user level updates when threshold points are reached"
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm that a notification or modal appears to inform the user of their new level or badge"
+      }
+    ]
+  },
+  {
+    "id": "TC010",
+    "title": "Display and Navigation of Leaderboards and Badges",
+    "description": "Verify that users can view leaderboards and badges pages correctly with accurate data reflecting gamification status.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the Leaderboard screen"
+      },
+      {
+        "type": "assertion",
+        "description": "Check the leaderboard lists users correctly sorted by points"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to the Badges screen"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that earned badges are displayed accurately"
+      }
+    ]
+  },
+  {
+    "id": "TC011",
+    "title": "Offline Mode Data Retention and Synchronization",
+    "description": "Verify that pet, healthcare, and gamification data persist fully during offline mode and synchronize with cloud backend upon reconnection without data loss.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Put the application in offline mode"
+      },
+      {
+        "type": "action",
+        "description": "Add or edit a pet's information as well as add vaccine or appointment records"
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm that all changes are saved locally and reflected immediately in the UI"
+      },
+      {
+        "type": "action",
+        "description": "Restart the app while still offline"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify all locally saved data remains present and accessible"
+      },
+      {
+        "type": "action",
+        "description": "Restore network connection and trigger synchronization"
+      },
+      {
+        "type": "assertion",
+        "description": "Check that all offline changes are correctly pushed to Supabase"
+      }
+    ]
+  },
+  {
+    "id": "TC012",
+    "title": "Smooth Navigation and State Persistence",
+    "description": "Verify that navigation between screens works smoothly with no data loss or error states during typical user flows such as switching between Home, My Pets, Vaccines, Gamification, and Services modules.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Log in and navigate sequentially through key screens: Home, My Pets, Pet Details, Vaccines, Appointments, Gamification, Adoption, Bath & Grooming, Vets"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify all screens load their data correctly and UI components render without errors"
+      },
+      {
+        "type": "action",
+        "description": "Navigate back and forth between screens"
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm that no data is lost and UI states persist appropriately"
+      }
+    ]
+  },
+  {
+    "id": "TC013",
+    "title": "Responsive UI Rendering Across Device Sizes",
+    "description": "Verify that the UI maintains visual design consistency and responsiveness with correct application of Tailwind CSS including glassmorphism and gradient styles across multiple screen sizes.",
+    "category": "ui",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Open the app on various device viewport sizes: mobile, tablet, desktop"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that all UI components render correctly without layout breakage"
+      },
+      {
+        "type": "assertion",
+        "description": "Ensure glassmorphism and gradient styles are present and consistent with design"
+      },
+      {
+        "type": "assertion",
+        "description": "Check that interactive elements remain accessible and usable on all screen sizes"
+      }
+    ]
+  },
+  {
+    "id": "TC014",
+    "title": "Pet Details Editing and Validation",
+    "description": "Verify that users can edit an existing pet's details with valid inputs and that validation errors appear for invalid entries.",
+    "category": "error handling",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to an existing pet's detail page"
+      },
+      {
+        "type": "action",
+        "description": "Initiate edit mode and modify pet name, breed, and birthdate"
+      },
+      {
+        "type": "action",
+        "description": "Enter invalid data (e.g., future birthdate, empty name) and attempt to save"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify validation errors are displayed appropriately"
+      },
+      {
+        "type": "action",
+        "description": "Correct invalid inputs and save again"
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm changes are saved and reflected immediately"
+      }
+    ]
+  },
+  {
+    "id": "TC015",
+    "title": "Pet-Related Services Modules Functionality",
+    "description": "Verify the adoption, grooming, and veterinary service modules display accurate listings and allow interactions such as viewing details or initiating appointments.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the Adoption screen"
+      },
+      {
+        "type": "assertion",
+        "description": "Ensure a list of available pets for adoption is shown with correct information"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to the Bath and Grooming screen"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify grooming services are listed and selectable"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to the Vets screen"
+      },
+      {
+        "type": "assertion",
+        "description": "Check that veterinary clinics are listed and details are accessible"
+      }
+    ]
+  }
+]

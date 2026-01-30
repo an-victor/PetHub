@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html class="light" lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PetHub - Doações e Adotantes</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FFD233", // Vibrant Yellow from prompt
+                        secondary: "#7C4DFF", // Soft Purple from reference
+                        accent: "#0F172A", // Dark Navy from prompt
+                        "background-light": "#F8FAFC",
+                        "background-dark": "#0F172A",
+                        "card-light": "#FFFFFF",
+                        "card-dark": "#1E293B",
+                    },
+                    fontFamily: {
+                        display: ["Plus Jakarta Sans", "sans-serif"],
+                        body: ["Plus Jakarta Sans", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "24px",
+                        "2xl": "32px",
+                        "3xl": "40px",
+                    },
+                },
+            },
+        };
+    </script>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .soft-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-accent dark:text-white antialiased">
+<div class="max-w-[430px] mx-auto min-h-screen relative flex flex-col bg-background-light dark:bg-background-dark pb-32">
+<div class="flex justify-between items-center px-8 py-4">
+<span class="font-bold text-sm">9:41</span>
+<div class="flex gap-1.5 items-center">
+<span class="material-icons-round text-[16px]">signal_cellular_alt</span>
+<span class="material-icons-round text-[16px]">wifi</span>
+<span class="material-icons-round text-[18px]">battery_full</span>
+</div>
+</div>
+<header class="px-6 py-4 flex flex-col gap-6">
+<div class="flex justify-between items-center">
+<div>
+<h1 class="text-3xl font-extrabold tracking-tight">PetHub</h1>
+<p class="text-slate-500 dark:text-slate-400 font-medium">Encontre seu novo melhor amigo</p>
+</div>
+<div class="w-12 h-12 bg-card-light dark:bg-card-dark rounded-full flex items-center justify-center soft-shadow relative">
+<span class="material-icons-round text-slate-600 dark:text-slate-300">notifications</span>
+<span class="absolute top-3 right-3 w-2.5 h-2.5 bg-red-500 border-2 border-white dark:border-card-dark rounded-full"></span>
+</div>
+</div>
+<div class="relative group">
+<span class="material-icons-round absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full bg-slate-100 dark:bg-card-dark border-none rounded-2xl py-4 pl-12 pr-4 focus:ring-2 focus:ring-primary text-sm font-medium" placeholder="Buscar por raça, idade ou local..." type="text"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 bg-white dark:bg-slate-700 p-1.5 rounded-xl soft-shadow">
+<span class="material-icons-round text-slate-500 dark:text-slate-300 text-sm">tune</span>
+</button>
+</div>
+</header>
+<div class="px-6 py-2">
+<div class="flex bg-slate-100 dark:bg-card-dark p-1.5 rounded-2xl">
+<button class="flex-1 py-3 text-center rounded-xl font-bold text-sm transition-all bg-white dark:bg-slate-700 shadow-sm text-accent dark:text-white">
+                    Adotar
+                </button>
+<button class="flex-1 py-3 text-center rounded-xl font-bold text-sm transition-all text-slate-500 dark:text-slate-400">
+                    Doar
+                </button>
+</div>
+</div>
+<div class="flex gap-3 overflow-x-auto px-6 py-4 hide-scrollbar">
+<button class="flex items-center gap-2 bg-primary px-4 py-2.5 rounded-full font-bold text-xs whitespace-nowrap text-accent">
+<span class="material-icons-round text-lg">pets</span> Todos
+            </button>
+<button class="flex items-center gap-2 bg-white dark:bg-card-dark border border-slate-100 dark:border-slate-800 px-4 py-2.5 rounded-full font-bold text-xs whitespace-nowrap text-slate-600 dark:text-slate-300">
+                🐕 Cães
+            </button>
+<button class="flex items-center gap-2 bg-white dark:bg-card-dark border border-slate-100 dark:border-slate-800 px-4 py-2.5 rounded-full font-bold text-xs whitespace-nowrap text-slate-600 dark:text-slate-300">
+                🐈 Gatos
+            </button>
+<button class="flex items-center gap-2 bg-white dark:bg-card-dark border border-slate-100 dark:border-slate-800 px-4 py-2.5 rounded-full font-bold text-xs whitespace-nowrap text-slate-600 dark:text-slate-300">
+                🦜 Pássaros
+            </button>
+</div>
+<section class="px-6 flex flex-col gap-6 py-4">
+<div class="bg-card-light dark:bg-card-dark rounded-[32px] overflow-hidden soft-shadow border border-slate-50 dark:border-slate-800/50 group">
+<div class="relative h-64 overflow-hidden">
+<img alt="Beagle puppy sitting in the grass" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATm2n29dabSH0ZWq0e5XRe5R3EQTBBkj3j65C05BJkaaxzJHDoWrpYhGTenqgkTNlohuYn47uyqyz6sHeBxi4J0ixYZnqlQU3en60D7gQCPwmKhj27U8guhIWyCjkglc3nMzcdRWEYXrvf3sM8MZWt7DmjsXHFjdAP1-l-Ooc1EjD9XqH9f16uUnMz-tjH5Tn72PFzV7i6cv9jWGxUa5IaUHnN4lmgaClVD6-jo069QRxSqg73sIt-w5Sev5vWffr0yxknc2f6O4df"/>
+<div class="absolute top-4 left-4 bg-white/90 dark:bg-black/40 backdrop-blur-md px-3 py-1.5 rounded-full flex items-center gap-1">
+<span class="material-icons-round text-sm text-primary">location_on</span>
+<span class="text-[11px] font-bold text-slate-700 dark:text-slate-100">São Paulo, SP</span>
+</div>
+<button class="absolute top-4 right-4 bg-white/90 dark:bg-black/40 backdrop-blur-md p-2 rounded-full">
+<span class="material-icons-round text-pink-500 text-lg">favorite</span>
+</button>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-xl font-bold mb-1">Max, 2 anos</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 font-medium leading-relaxed">Dócil, brincalhão e ama correr no parque. Ideal para famílias com crianças.</p>
+</div>
+<div class="bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 px-3 py-1 rounded-lg text-[10px] font-extrabold uppercase tracking-wider">Macho</div>
+</div>
+<div class="flex items-center justify-between pt-2">
+<div class="flex -space-x-3">
+<img alt="User avatar" class="w-8 h-8 rounded-full border-2 border-white dark:border-card-dark" src="https://lh3.googleusercontent.com/aida-public/AB6AXuByGSppsfKEzhQG74TEUGWBhdKV4bGZP_aOAlwD5PY-SXlxilALrXSMhQU8es1K_UqaQdu5L4fIgHkBidp0SuJ5rT_Ekc8mwxNZkKk_UH-XuvTfeQAdLoAFnE5grP3h8GGPMF-nw_a51z7D6u5Uo-y_bs7-giET-WWjkRLttts8ZOtFAIy2ZPN0cuWAdPTSTxhd8-WM3n2FcyKFRdfP7n3WKVcOngiVuvvw5hyk57Pktpd_OsApcD3SjhSbUUnJv5iU7OGOrbqWMKBC"/>
+<div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-700 border-2 border-white dark:border-card-dark flex items-center justify-center">
+<span class="text-[10px] font-bold">+12</span>
+</div>
+</div>
+<button class="bg-primary hover:bg-yellow-400 text-accent px-6 py-3 rounded-2xl font-bold flex items-center gap-2 transition-all active:scale-95">
+<span class="material-icons-round text-lg">chat_bubble</span>
+                            Conversar
+                        </button>
+</div>
+</div>
+</div>
+<div class="bg-card-light dark:bg-card-dark rounded-[32px] overflow-hidden soft-shadow border border-slate-50 dark:border-slate-800/50 group">
+<div class="relative h-64 overflow-hidden">
+<img alt="Grey fluffy cat looking up" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDviel4VKy4m0vDBsZmSarj7Y7PrUUmAFRpN3P_oEH0cP8GkNNt7Tq6kLpvdsoy1ijmHorrzgvnWsQo8FeTuewTQAhq8Zh4acuyH1bI14aOW9DKrAJnvZJXi785S0yggcXkOmUKjXxeg56sf3-27AMxtzfMb3DxMJcQ53dFKLiB5SfTdlxc1UPxhsQMWhtZTFnepFABdzIRToCHccocWdG6WGzXp3TsnNYS0mcuHkYbY4HbWhKzHOEEhZY7lcHCq7pqQ7tMPC3C8OMW"/>
+<div class="absolute top-4 left-4 bg-white/90 dark:bg-black/40 backdrop-blur-md px-3 py-1.5 rounded-full flex items-center gap-1">
+<span class="material-icons-round text-sm text-primary">location_on</span>
+<span class="text-[11px] font-bold text-slate-700 dark:text-slate-100">Curitiba, PR</span>
+</div>
+<button class="absolute top-4 right-4 bg-white/20 dark:bg-black/20 backdrop-blur-md p-2 rounded-full">
+<span class="material-icons-round text-white text-lg">favorite_border</span>
+</button>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-xl font-bold mb-1">Luna, 6 meses</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 font-medium leading-relaxed">Resgatada recentemente, muito carinhosa e já castrada.</p>
+</div>
+<div class="bg-pink-100 dark:bg-pink-900/30 text-pink-600 dark:text-pink-300 px-3 py-1 rounded-lg text-[10px] font-extrabold uppercase tracking-wider">Fêmea</div>
+</div>
+<div class="flex items-center justify-between pt-2">
+<div class="flex -space-x-3">
+<img alt="User avatar" class="w-8 h-8 rounded-full border-2 border-white dark:border-card-dark" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKchI2BHn8VKeDPo7mXJyrR51cT23Zyz66kLefFI-hIYzxUEllQoh3tysRqKQW3cdzJNFxGDknYCMmpqtlkPmVn7pGvo1lvsfFbqBIC2L2EVCw48e0UN_qyyoycE2_VMiJRqRD4Hj7V-fh-j_lbrYGAsZJyaYxnDKAR6YdhicPVW-i8LRc3ZG9k7rj1bKmpa8is44zXqYoE4JRicT5_pMPFwtmp17y_14L7BUTf0vxtZyDIp9ZhzIfseuJvnr7pPIn9nannqtCoiMi"/>
+</div>
+<button class="bg-primary hover:bg-yellow-400 text-accent px-6 py-3 rounded-2xl font-bold flex items-center gap-2 transition-all active:scale-95">
+<span class="material-icons-round text-lg">chat_bubble</span>
+                            Conversar
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<nav class="fixed bottom-8 left-1/2 -translate-x-1/2 w-[90%] max-w-[380px] bg-accent dark:bg-slate-800 rounded-3xl py-4 px-8 flex justify-between items-center shadow-2xl z-50">
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-icons-round">home</span>
+<span class="text-[10px] font-bold">Início</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400 hover:text-white transition-colors">
+<span class="material-icons-round">explore</span>
+<span class="text-[10px] font-bold">Mapa</span>
+</button>
+<div class="relative -top-8">
+<button class="bg-primary w-14 h-14 rounded-2xl flex items-center justify-center text-accent shadow-[0_0_20px_rgba(255,210,51,0.4)] active:scale-90 transition-transform">
+<span class="material-icons-round text-3xl">add</span>
+</button>
+</div>
+<button class="flex flex-col items-center gap-1 text-slate-400 hover:text-white transition-colors">
+<span class="material-icons-round">chat</span>
+<span class="text-[10px] font-bold">Mensagens</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400 hover:text-white transition-colors">
+<span class="material-icons-round">person</span>
+<span class="text-[10px] font-bold">Perfil</span>
+</button>
+</nav>
+<div class="fixed bottom-1 left-1/2 -translate-x-1/2 w-32 h-1 bg-slate-200 dark:bg-slate-700 rounded-full"></div>
+</div>
+
+</body></html>

@@ -1,0 +1,335 @@
+DOCUMENTO COMPLETO DE GAMIFICAÇÃO
+
+Sistema de Engajamento e Retenção - v1.0
+I. FILOSOFIA E PRINCÍPIOS FUNDAMENTAIS
+1.1 Objetivo Estratégico
+Transformar obrigações de cuidado pet em comportamentos recompensadores e aditivos, criando um ciclo de feedback positivo onde o bem-estar do animal gera valor tangível e intangível para o tutor.
+1.2 Princípios Anti-Fraude
+"Nenhum ponto sem prova": Fotos, localização, timestamps e confirmação de terceiros são obrigatórios
+Limite diário/semanal: Proteção contra spam de ações
+Cooldown progressivo: Mesmas ações repetidas têm valor decrescente
+** auditoria humana**: Ações de alto valor (doações) passam por review manual
+Sistema de reputação: Usuários reportados por fraude perdem 50% dos pontos
+1.3 Distinção Free vs Premium
+Premium ganha +50% de pontos em todas as ações + acesso a missões exclusivas
+Free pode alcançar as mesmas recompensas, mas em 1.5x mais tempo
+Conversão inteligente: Ao atingir 80% de uma meta grande, o app sugere upgrade Premium "para garantir a recompensa"
+II. SISTEMA DE PONTUAÇÃO "PET Score"
+2.1 Unidade: Patinhas (🐾)
+Símbolo: Uma pata de cachorro/gato estilizada
+2.2 Tabela Completa de Pontuação
+Table
+Copy
+Ação	Free	Premium	Frequência	Prova Requerida	Cooldown
+Registrar vacina	50 🐾	75 🐾	2x/ano por vacina	Foto + data + clinica	30 dias
+Agendar consulta preventiva	30 🐾	45 🐾	1x/mês	Confirmação vet via API	7 dias
+Comparecer à consulta	+20 🐾	+30 🐾	-	Check-in GPS na clínica	-
+Ler dica de adestramento	5 🐾	8 🐾	3x/dia	Tempo de leitura >30s	24h
+Doar para abrigo	100 🐾	150 🐾	Ilimitado	Comprovante PIX + review	48h
+Marcar banho/tosa	25 🐾	38 🐾	2x/mês	Foto do recibo	14 dias
+Avaliar serviço	10 🐾	15 🐾	1x/serviço	Texto + estrelas	-
+Indicar amigo (efetiva)	40 🐾	60 🐾	5x/mês	Amigo registra pet	7 dias
+Adicionar pet ao app	100 🐾	150 🐾	3x/conta	Microchip/foto	-
+Completar perfil (100%)	50 🐾	75 🐾	1x	Todos os campos	-
+Assistir vídeo educativo	15 🐾	23 🐾	2x/dia	80% do vídeo visto	24h
+Participar de fórum	5 🐾	8 🐾	5x/dia	Resposta >20 caracteres	1h
+Reportar animal abandonado	200 🐾	300 🐾	3x/mês	Foto + localização	10 dias
+Manter peso atualizado	20 🐾	30 🐾	1x/mês	Foto na balança	30 dias
+Criar alerta de medicamento	10 🐾	15 🐾	3x/mês	-	-
+2.3 Sistema de Decaimento para Prevenir Spam
+JavaScript
+Copy
+// Fórmula de Diminuição de Retorno
+pontos_recebidos = base_pontos * (0.5 ^ (repeticoes - 1))
+
+Exemplo: 
+- 1ª vacina do ano: 50 🐾
+- 2ª vacina no mesmo mês: 25 🐾 (50 * 0.5)
+- 3ª vacina: 12.5 🐾 (50 * 0.5²)
+III. NÍVEIS E PROGRESSÃO
+3.1 Tabela de Níveis (Fórmula Exponencial)
+Table
+Copy
+Nível	Patinhas Necessárias	Benefícios Desbloqueados	Badge
+Filhote	0 🐾	Acesso básico	🍼
+Adulto I	500 🐾	5% off em rações parceiras	🐾
+Adulto II	1.500 🐾	Consulta grátis (1x/ano)	🐕
+Adulto III	3.000 🐾	Badge "Tutor Responsável"	⭐
+Sênior I	5.000 🐾	Frete grátis em produtos	🎖️
+Sênior II	8.000 🐾	Adestramento grátis (1 módulo)	🏆
+Sênior III	12.000 🐾	Prioridade em adoções	👑
+Pet Vip	20.000 🐾	1 ano de Premium grátis	💎
+Pet Campeão	35.000 🐾	Nome no Hall da Fama + viagem pra Pet Paradise (sorteio)	🌟
+Fórmula de Cálculo:
+patrimas_necessarias_proximo_nivel = nivel_atual * 1000 * 1.25^(nivel_atual - 1)
+3.2 Barra de Progresso Visual
+UI Element: Barra horizontal com patinhas preenchidas
+Gamificação psicológica: Mostrar "Faltam 120 🐾 para Sênior I" com estimativa de tempo
+Streak de atividades: 7 dias seguidos de ações = +50 🐾 bônus
+IV. SISTEMA DE MISSÕES
+4.1 Missões Principais (Permanentes)
+Table
+Copy
+Missão	Requisitos	Recompensa Free	Recompensa Premium	Dificuldade
+Vacina em Dia	3 vacinas diferentes registradas	200 🐾 + 10% off ração	300 🐾 + 20% off ração	★★☆☆☆
+Fitness Pet	12 banhos/tosas no ano	300 🐾 + 1 banho grátis	450 🐾 + 3 banhos grátis	★★★☆☆
+Guardião	Doar 3x para abrigos	500 🐾 + Badge "Herói"	750 🐾 + Badge "Guardião" + destaque	★★★★☆
+Educação	Ler 30 dicas de adestramento	150 🐾 + E-book grátis	225 🐾 + Curso online grátis	★★☆☆☆
+Social	Indicar 5 amigos efetivos	400 🐾 + 1 mês Premium	600 🐾 + 3 meses Premium	★★★★★
+Peso Ideal	Atualizar peso mensal por 6 meses	250 🐾 + consulta nutri grátis	375 🐾 + plano alimentar personalizado	★★☆☆☆
+Protetor	Reportar 2 casos de maus-tratos	600 🐾 + certificado	900 🐾 + parceria com delegacia	★★★★★
+4.2 Missões Sazonais (Eventos Limitados)
+Exemplo: "Outubro Rosa Pet"
+Objetivo: Marcar consulta de preventivo de câncer de mama/tártaro
+Recompensa: 500 🐾 + 30% off no procedimento
+Duração: 1-31 de outubro
+Meta coletiva: Se 1000 tutores participarem, doamos R$5.000 para abrigo X
+Calendário Anual:
+Janeiro: "Novo Ano, Pet Novo" - Metas de peso
+Abril: "Páscoa Segura" - Sem chocolate para pets
+Junho: "Dia dos Namorados" - Foto com pet + crush
+Setembro: "Setembro Amarelo" - Saúde mental do tutor e pet
+Novembro: "Black Fur-day" - Descontos progressivos
+V. SISTEMA DE RECOMPENSAS E MARKETPLACE
+5.1 Marketplace de Prêmios (Troca de Patinhas)
+Table
+Copy
+Prêmio	Custo (🐾)	Estoque	Condições
+Cupom 10% Ração	300 🐾	Ilimitado	1x/mês
+Consulta Grátis (parceiro)	1.200 🐾	50/mês	Nível Sênior+
+Brinquedo Pet (envio)	2.500 🐾	100/mês	Nível Pet Vip+
+1 Mês Premium	5.000 🐾	Ilimitado	Free only
+Kit de Primeiros Socorros	4.000 🐾	30/mês	Nível Sênior II+
+Foto profissional do pet	6.000 🐾	20/mês	Nível Pet Vip+
+Fim de semana no Pet Hotel	15.000 🐾	5/mês	Sorteio
+Doação em nome do pet	1.000 🐾	Ilimitado	Para abrigos
+5.2 Recompensas Automáticas por Nível
+Ao subir de nível: +100 🐾 bônus + push de parabéns
+Cada 7 dias consecutivos: +50 🐾
+Aniversário do pet: +200 🐾 + gift especial
+VI. SISTEMA ANTI-FRAUDE E BALANCEAMENTO
+6.1 Regras de Validação
+JavaScript
+Copy
+// Exemplo de validação de vacina
+function validarVacina(foto, data, clinica) {
+  // 1. Timestamp não pode ser futuro nem >7 dias passado
+  if (data > agora() || data < agora() - 7dias) return "DATA_INVÁLIDA";
+  
+  // 2. Foto deve conter texto OCR reconhecível
+  const texto = OCR(foto);
+  if (!texto.includes("VACINA") && !texto.match(/\d{2}\/\d{2}\/\d{4}/)) 
+    return "FOTO_INVALIDA";
+  
+  // 3. Localização deve estar a <5km de uma clínica cadastrada
+  const distancia = calcularDistancia(GPSusuario, clinicasProximas);
+  if (distancia > 5km && !usuario.eHUM() ) return "LOCALIZACAO_INVALIDA";
+  
+  // 4. Cooldown: não pode ter vacina da mesma doença <30 dias
+  const ultimaVacina = buscarUltimaVacina(tipo);
+  if (ultimaVacina && ultimaVacina.data > agora() - 30dias) 
+    return "COOLDOWN_ATIVO";
+  
+  return "VALIDO";
+}
+6.2 Sistema de Reputação do Usuário
+Table
+Copy
+Reputação	Como Ganhar	Penalidades por Fraude
+Novato	Cadastro inicial	-50% pontos se reportado 1x
+Confiável	10 ações válidas	-75% pontos se reportado 2x
+Verificado	50 ações + telefone	Bloqueio de 7 dias se reportado 3x
+Embaixador	200 ações + indicações	Banimento permanente + blacklist
+6.3 Auditoria Automática
+ML Model: Treine modelo para detectar fotos duplicadas (mesmo vacina enviada por múltiplos usuários)
+Análise de padrões: Usuário que ganha 1000 🐾/dia é sinal de fraude
+Red Flag System: 3 flags = conta suspensa para revisão manual
+VII. PROGRESSÃO PREMIUM E ECONOMIA DO SISTEMA
+7.1 Booster Premium
+Multiplicador: 1.5x em todas as ações
+Missões exclusivas: +2 missões sazonais/mês
+Cooldown reduzido: -50% tempo de espera
+Acesso antecipado: Novas features 2 semanas antes
+7.2 Cálculo de ROI do Sistema
+Copy
+Premissa: Cada usuário ativo vale R$ 12/mês (ads + comissões)
+
+Para manter equilíbrio:
+- Custo médio por prêmio: R$ 15
+- Pontos necessários: 1.500 🐾
+- Média de pontos/mês (Free): 800 🐾
+- Média de pontos/mês (Premium): 1.200 🐾
+
+Break-even: Usuário precisa estar ativo 2 meses para "pagar" o prêmio
+7.3 Sistema de "Moeda Premium" Separada
+Para evitar inflação, crie "Pedigree Coins" (💎) para Premium:
+Conversão: 1.000 🐾 = 1 💎
+Uso exclusivo: Comprar itens raros, skins de perfil, badges animados
+Não pode ser comprada: Apenas ganha via engajamento
+VIII. EVENTOS E COMPETIÇÕES
+8.1 Competições Semanais
+Ranking de Patinhas: Top 10 ganham prêmios exclusivos
+Desafio da Semana: "Quem cadastrar mais vacinas" → Líder ganha 500 🐾 bônus
+8.2 Eventos Globais
+"Maratona Pet": 30 dias de desafios diários
+"Copa das Raças": Competição entre raças (ex: Vira-latas vs Pugs)
+"Natal Solidário": Meta coletiva de doações
+IX. INTEGRAÇÃO COM OUTRAS FUNCIONALIDADES
+9.1 Caderneta de Vacinação
+Gamificação: Cada vacina dá pontos + desbloqueia "selos de saúde"
+Streak: Manter vacinas em dia por 1 ano = Badge "Guardião da Saúde"
+9.2 Adestramento
+Progresso: Cada truque aprendido = +50 🐾
+Vídeo: Enviar vídeo do pet fazendo truque = +100 🐾 (após aprovação de moderador)
+9.3 Adoção
+Quem adota: +1.000 🐾 + 3 meses Premium grátis
+Quem doa: +500 🐾 + destaque no perfil
+Meta coletiva: Cada 10 adoções na comunidade = todos ganham 50 🐾
+X. MÉTRICAS DE SUCESSO
+10.1 KPIs a Acompanhar
+Pontos médios por usuário/mês: Meta 800 🐾
+Tempo para primeiro resgate: Meta <45 dias
+Taxa de resgate: Meta 15% dos usuários/mês
+Retenção D7: Meta >40%
+Retenção D30: Meta >25%
+Conversão Free→Premium: Meta 8%
+10.2 Dashboard de Monitoramento
+sql
+Copy
+-- Query para detectar anomalias de fraude
+SELECT user_id, COUNT(*) as acoes_dia, SUM(pontos) as pontos_dia
+FROM gamificacao_log
+WHERE created_at > NOW() - INTERVAL '24 hours'
+GROUP BY user_id
+HAVING COUNT(*) > 50 OR SUM(pontos) > 2000;
+XI. ROADMAP DE IMPLEMENTAÇÃO
+FASE 1 - MVP (Mês 1-2)
+[ ] Sistema base de pontos para vacinas e consultas
+[ ] 3 níveis iniciais (Filhote, Adulto I, Adulto II)
+[ ] 2 missões permanentes
+[ ] Marketplace com 2 prêmios
+FASE 2 - EXPANSÃO (Mês 3-4)
+[ ] Implementar todas as missões permanentes
+[ ] Sistema de badges e conquistas
+[ ] Leaderboard local (cidade)
+[ ] Primeiro evento sazonal
+FASE 3 - PREMIUM (Mês 5-6)
+[ ] Booster de 1.5x para Premium
+[ ] Missões Premium exclusivas
+[ ] Sistema de Pedigree Coins
+[ ] Auditoria anti-fraude v1
+FASE 4 - ESCALONAMENTO (Mês 7-12)
+[ ] Eventos globais mensais
+[ ] Integração com redes sociais (compartilhar conquistas)
+[ ] Sistema de clãs/tribos (ex: "Tutores de Vira-latas")
+[ ] Machine Learning para detecção de fraude
+XII. REGRAS LEGAIS E TERMOS
+12.1 Cláusulas Essenciais
+"Pontos não têm valor monetário e não podem ser vendidos"
+"Reserva-se o direito de ajustar pontos por comportamento suspeito"
+"Prêmios sujeitos a disponibilidade e podem ser substituídos"
+"Contas inativas por 12 meses perdem 10% dos pontos/mês"
+12.2 Compliance LGPD
+Todos os dados de gamificação são anonimizados em relatórios
+Usuário pode exportar seu histórico de pontos
+Exclusão da conta remove todos os pontos irreversivelmente
+XIII. DOCUMENTAÇÃO TÉCNICA RÁPIDA
+13.1 Estrutura do Banco de Dados
+sql
+Copy
+-- Tabela principal de pontuação
+CREATE TABLE gamificacao_pontos (
+  id UUID PRIMARY KEY,
+  user_id UUID REFERENCES auth.users(id),
+  acao TEXT NOT NULL,
+  pontos INTEGER NOT NULL,
+  multiplicador DECIMAL DEFAULT 1.0,
+  validado BOOLEAN DEFAULT false,
+  metadata JSONB, -- {foto_url, localizacao, device_id}
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Tabela de níveis do usuário
+CREATE TABLE gamificacao_niveis (
+  user_id UUID PRIMARY KEY REFERENCES auth.users(id),
+  nivel_atual INTEGER DEFAULT 1,
+  pontos_acumulados INTEGER DEFAULT 0,
+  pontos_gastos INTEGER DEFAULT 0,
+  data_ultimo_nivel TIMESTAMP,
+  streak_dias INTEGER DEFAULT 0
+);
+
+-- Tabela de missões completadas
+CREATE TABLE gamificacao_missoes (
+  id UUID PRIMARY KEY,
+  user_id UUID REFERENCES auth.users(id),
+  missao_id TEXT NOT NULL,
+  completada_em TIMESTAMP,
+  recompensa_recebida BOOLEAN DEFAULT false
+);
+13.2 Exemplo de Regra no Backend
+JavaScript
+Copy
+// Função para adicionar pontos (Supabase Edge Function)
+export async function adicionarPontos(userId, acao, metadata) {
+  // 1. Verifica cooldown
+  const cooldown = await verificarCooldown(userId, acao);
+  if (cooldown.active) return { error: "Cooldown ativo" };
+  
+  // 2. Verifica se é Premium
+  const user = await getUser(userId);
+  const multiplicador = user.isPremium ? 1.5 : 1.0;
+  
+  // 3. Valida ação
+  const validacao = await validarAcao(acao, metadata);
+  if (!validacao.valido) return { error: validacao.motivo };
+  
+  // 4. Calcula pontos com decaimento
+  const pontosBase = getPontosBase(acao);
+  const repeticoes = await getRepeticoesHoje(userId, acao);
+  const pontos = Math.floor(
+    pontosBase * multiplicador * Math.pow(0.5, repeticoes) * validacao.confidence
+  );
+  
+  // 5. Insere e verifica subida de nível
+  await supabase.from('gamificacao_pontos').insert({ user_id: userId, acao, pontos });
+  await verificarSubidaNivel(userId);
+  
+  // 6. Envia push notification
+  await enviarPush("🎉 Você ganhou " + pontos + " patinhas!", userId);
+  
+  return { success: true, pontos };
+}
+XIV. TESTES DE BALANCEAMENTO
+14.1 Simulação de Usuário Típico
+Usuário Premium, 1 pet, uso médio:
+Vacinas: 3x/ano = 225 🐾
+Consultas: 12x/ão = 540 🐾
+Banhos: 24x/ano = 912 🐾
+Dicas: 30/mês = 900 🐾/ano
+Missões: 4x/ano = 1.000 🐾
+Total anual: 3.577 🐾 → Nível Sênior I em 1.4 anos
+Usuário Free, mesmas ações: 2.385 🐾/ano → Nível Sênior I em 2.1 anos
+Equilíbrio validado: Premium é 50% mais rápido, mas Free ainda alcança recompensas significativas.
+XV. PRÓXIMOS PASSOS
+Valide com 10 usuários beta: Dê a cada um 1.000 🐾 iniciais e peça para gastarem
+Monitore a primeira semana: Qual ação mais gera pontos? Onde há fraude?
+Ajuste os valores: Se ninguém alcançar nível Adulto II em 30 dias, reduza requisitos em 20%
+
+#### Plano Premium: R$19,90/mês
+Para sustentar os prêmios físicos e serviços, o sistema tem diferenciação significativa:
+
+| Característica | 🆓 Free | 💎 Premium |
+|----------------|---------|------------|
+| **Pontos por ação** | 1-20 pts | 50-300 pts (10x mais) |
+| **Bônus fim de semana** | ❌ | ✅ 2x pontos |
+| **Prêmios físicos** | ❌ Apenas cupons simbólicos | ✅ Todos disponíveis |
+| **Consulta grátis** | ❌ | ✅ 1200 pts |
+| **Brinquedos/Kits** | ❌ | ✅ |
+| **Pet Hotel** | ❌ | ✅ |
+| **Desconto parceiros** | 5% | 15% |
+| **Streak bonus** | 1x | 1.5x |
+
+#### Prêmios Disponíveis:
+- **Free**: Cupom 5% ração (200 pts), Doação R$5 (500 pts), 1 mês Premium (2500 pts)
+- **Premium**: Consulta veterinária, Brinquedos, Kits, Banho grátis, Ensaio foto, Pet Hotel

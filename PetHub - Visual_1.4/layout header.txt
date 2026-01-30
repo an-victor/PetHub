@@ -1,0 +1,50 @@
+import { Bell, Settings } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+interface HeaderProps {
+  userName: string;
+  userAvatar?: string;
+  notificationCount?: number;
+}
+
+export function Header({ userName, userAvatar, notificationCount = 0 }: HeaderProps) {
+  return (
+    <header className="sticky top-0 z-40 bg-background/95 backdrop-blur-sm border-b border-border">
+      <div className="flex items-center justify-between p-4 max-w-lg mx-auto">
+        <div className="flex items-center gap-3">
+          {userAvatar ? (
+            <img
+              src={userAvatar}
+              alt={userName}
+              className="w-11 h-11 rounded-full object-cover ring-2 ring-coral/30"
+            />
+          ) : (
+            <div className="w-11 h-11 rounded-full bg-coral-light flex items-center justify-center">
+              <span className="text-lg font-bold text-coral">
+                {userName.charAt(0).toUpperCase()}
+              </span>
+            </div>
+          )}
+          <div>
+            <p className="text-sm text-muted-foreground">Olá,</p>
+            <p className="font-bold text-foreground">{userName} 👋</p>
+          </div>
+        </div>
+        
+        <div className="flex items-center gap-2">
+          <Button variant="ghost" size="icon" className="relative">
+            <Bell className="w-5 h-5" />
+            {notificationCount > 0 && (
+              <span className="absolute -top-1 -right-1 w-5 h-5 bg-rose text-primary-foreground text-xs font-bold rounded-full flex items-center justify-center">
+                {notificationCount > 9 ? "9+" : notificationCount}
+              </span>
+            )}
+          </Button>
+          <Button variant="ghost" size="icon">
+            <Settings className="w-5 h-5" />
+          </Button>
+        </div>
+      </div>
+    </header>
+  );
+}

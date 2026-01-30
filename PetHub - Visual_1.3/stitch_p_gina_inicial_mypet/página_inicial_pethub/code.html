@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html class="light" lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PetHub - Página Inicial</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FFD700", // Yellow
+                        "navy-dark": "#1A1C2E", // Dark Navy
+                        "background-light": "#F8F9FE",
+                        "background-dark": "#0F111A",
+                        "water-green": "#E0F2F1",
+                        "soft-orange": "#FFF3E0",
+                        "soft-purple": "#F3E5F5",
+                    },
+                    fontFamily: {
+                        display: ["Quicksand", "sans-serif"],
+                    },
+                    borderRadius: {
+                        '3xl': '30px',
+                        DEFAULT: "12px",
+                    },
+                },
+            },
+        };
+    </script>
+<style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .soft-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+        }
+        .dark .glass {
+            background: rgba(26, 28, 46, 0.7);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-navy-dark dark:text-gray-100 min-h-screen flex justify-center items-start">
+<div class="relative w-full max-w-[430px] min-h-screen bg-background-light dark:bg-background-dark overflow-hidden pb-24">
+<div class="flex justify-between items-center px-8 pt-4 pb-2 text-sm font-semibold">
+<span>9:41</span>
+<div class="flex items-center gap-1">
+<span class="material-icons-round text-[16px]">signal_cellular_alt</span>
+<span class="material-icons-round text-[16px]">wifi</span>
+<span class="material-icons-round text-[16px]">battery_full</span>
+</div>
+</div>
+<header class="flex justify-between items-center px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary ring-2 ring-white dark:ring-navy-dark">
+<img alt="User Profile" class="w-full h-full object-cover bg-soft-orange" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWN73JyFV-R0vqXS3fgN3TEUwWz4mjV54xiZpDbRUH5LXSkPnUa7B-0af2CR_wfuXO2xYtnJRRhM5p4us0o92vvWgxMGq8R41UyM2FhmvihM2FiqXNNIlsV0Cof3SntwRj81TzB4Y9J30uo4EVCWGf2muvJwXQay_RC666pHbEb7Ggq_d14GEtrjhKR6uE10asXi4ZFNjZ62YdNt9IXadZVlaACp24cWYAYMEaAyej4WQBmy7y3HuAyd6_0zpRjO1JFn2aPJN_kwYC"/>
+</div>
+<div>
+<h1 class="text-xl font-bold leading-tight">Hey, Jacob</h1>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-medium">Pet Parent</p>
+</div>
+</div>
+<button class="w-11 h-11 rounded-full bg-white dark:bg-navy-dark flex items-center justify-center soft-shadow relative">
+<span class="material-icons-round text-navy-dark dark:text-white">notifications_none</span>
+<span class="absolute top-3 right-3 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-navy-dark"></span>
+</button>
+</header>
+<section class="px-6 py-4">
+<div class="relative w-full aspect-[16/9] rounded-3xl bg-gradient-to-br from-soft-purple to-purple-100 dark:from-purple-900/40 dark:to-purple-800/20 overflow-hidden flex items-center p-6 soft-shadow">
+<div class="absolute top-0 right-0 -mr-12 -mt-12 w-48 h-48 bg-primary/20 rounded-full blur-3xl"></div>
+<div class="relative z-10 w-2/3">
+<h2 class="text-2xl font-bold text-navy-dark dark:text-white mb-1">Buddy's Care</h2>
+<div class="inline-block px-3 py-1 bg-primary text-navy-dark font-bold text-xs rounded-lg mb-3">
+                        NEXT VACCINE
+                    </div>
+<p class="text-navy-dark/70 dark:text-gray-300 text-sm mb-4">
+                        Rabies Booster scheduled for next Tuesday, 10:00 AM.
+                    </p>
+<button class="bg-navy-dark dark:bg-white text-white dark:text-navy-dark px-6 py-2.5 rounded-2xl font-bold text-sm hover:scale-105 transition-transform">
+                        Check Details
+                    </button>
+</div>
+<div class="absolute bottom-0 right-2 w-1/3">
+<img alt="Playful Pet" class="w-full transform translate-y-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACwpzyGuFdiKT0MMGPCfbW1Nv_wv5Ut5anJk9p2ObhfwCyNZ3HKIBTe9E_OsHPAOkFhaASt4bj5VAUM4dHbD-PKzdMSXxKWTVj1YxnXk1tnDtCC4YERnogMX3jM4xDecar1qmzKX9hCmlXshbrH2cPV0hz4yAf9-bJfX7HkPp4XJbRbiYAKT9jxwIxpD-u8_fBP_eYnKftjtRgsoS1hdj7tMbcmYjaeTaLLWNyUhEXxAVZVOZ31SR7zYjfSa5g27xvrcXB9_Dds8zm"/>
+</div>
+</div>
+</section>
+<section class="px-6 py-4">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-xl font-bold">Your Activity</h3>
+<button class="text-sm font-bold text-gray-400 hover:text-primary transition-colors">See All</button>
+</div>
+<div class="grid grid-cols-1 gap-4">
+<div class="bg-water-green dark:bg-teal-900/30 rounded-3xl p-5 flex items-center gap-5 soft-shadow border border-white/50 dark:border-white/5">
+<div class="w-20 h-20 bg-white/60 dark:bg-navy-dark/40 rounded-2xl flex items-center justify-center relative overflow-hidden">
+<span class="material-icons-round text-4xl text-teal-600 dark:text-teal-400">directions_walk</span>
+<div class="absolute bottom-1 right-1 flex -space-x-2">
+<div class="w-6 h-6 rounded-full border-2 border-water-green bg-gray-200 overflow-hidden">
+<img alt="User 1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCALOqMBcA7MNM8--2a4czOUgJwvaPJu3eJtyOM7bitaenBzEPssvb28x-LncbQ3FLkTuuzKACW8SlU8NZDI2M-D4o-381XmiwQXsIOJ0hkgRJBX60uJNKB9H7FpUS8x36JBKGUhEBtkRyxCjMl9ruRp5Iry8IouF4aoh-yGbXSN1C01IYeQHmcBq6P7ADRu-omAeqhPa_RO2Ae2DQ7QPs23_gR3WmXroz-u5HYKF_aJzg3JPJos3adyUJqGmwLbPLm3B2AL82vpblg"/>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-water-green bg-gray-300 overflow-hidden">
+<img alt="User 2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6Ve5r7wVX2l-6NEw7fQm-IbmXlKRfN5JNWp6UNlSEUonw95M4y_Qm4N9ih_lH4H8VcDmH5li8Uj2P5KiEd9ik67m20acbiE3Bt6Wrev0UseoKBLWEgoM5LnK2Fl78rYiErIQqVvHRWHLmwTPtw-0KVd2B2JS1Lq1QNv-x5FVfaVv3TaHcndrAh2EsRwEfaBKYwLS3vB9QnzSl5qMdmFesV7MYHFmJd9US1-TyDu9YKo4PYtOPR95xiRNb-gIDxeZeuyoQVw22BTBv"/>
+</div>
+</div>
+</div>
+<div class="flex-1">
+<p class="text-teal-800 dark:text-teal-300 font-bold">Walk Time</p>
+<div class="flex items-end gap-1">
+<span class="text-3xl font-black">45</span>
+<span class="text-sm font-bold text-teal-800/60 dark:text-teal-300/60 mb-1">mins today</span>
+</div>
+</div>
+<button class="w-12 h-12 bg-navy-dark dark:bg-white text-white dark:text-navy-dark rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
+<span class="material-icons-round">north_east</span>
+</button>
+</div>
+<div class="bg-soft-orange dark:bg-orange-900/30 rounded-3xl p-5 flex items-center gap-5 soft-shadow border border-white/50 dark:border-white/5">
+<div class="w-20 h-20 bg-white/60 dark:bg-navy-dark/40 rounded-2xl flex items-center justify-center relative overflow-hidden">
+<span class="material-icons-round text-4xl text-orange-600 dark:text-orange-400">pets</span>
+<div class="absolute inset-2 border-2 border-orange-200 dark:border-orange-800 rounded-full border-t-orange-500"></div>
+</div>
+<div class="flex-1">
+<p class="text-orange-800 dark:text-orange-300 font-bold">Daily Steps</p>
+<div class="flex items-end gap-1">
+<span class="text-3xl font-black">8,432</span>
+<span class="text-sm font-bold text-orange-800/60 dark:text-orange-300/60 mb-1">steps</span>
+</div>
+</div>
+<button class="w-12 h-12 bg-navy-dark dark:bg-white text-white dark:text-navy-dark rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
+<span class="material-icons-round">north_east</span>
+</button>
+</div>
+<div class="bg-primary/20 dark:bg-yellow-900/20 rounded-3xl p-5 flex items-center gap-5 soft-shadow border border-white/50 dark:border-white/5">
+<div class="w-20 h-20 bg-white/60 dark:bg-navy-dark/40 rounded-2xl flex items-center justify-center">
+<span class="material-icons-round text-4xl text-yellow-600 dark:text-yellow-400">nights_stay</span>
+</div>
+<div class="flex-1">
+<p class="text-yellow-800 dark:text-yellow-300 font-bold">Sleep Quality</p>
+<div class="flex items-end gap-1">
+<span class="text-3xl font-black">92</span>
+<span class="text-sm font-bold text-yellow-800/60 dark:text-yellow-300/60 mb-1">% restful</span>
+</div>
+</div>
+<button class="w-12 h-12 bg-navy-dark dark:bg-white text-white dark:text-navy-dark rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
+<span class="material-icons-round">north_east</span>
+</button>
+</div>
+</div>
+</section>
+<nav class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-[380px] bg-navy-dark dark:bg-navy-dark/90 backdrop-blur-lg h-20 rounded-full flex items-center justify-around px-4 shadow-2xl z-50">
+<button class="w-12 h-12 rounded-full bg-primary text-navy-dark flex items-center justify-center shadow-[0_0_15px_rgba(255,215,0,0.4)]">
+<span class="material-icons-round">home</span>
+</button>
+<button class="text-gray-400 hover:text-white transition-colors">
+<span class="material-icons-round">calendar_today</span>
+</button>
+<button class="text-gray-400 hover:text-white transition-colors">
+<span class="material-icons-round">analytics</span>
+</button>
+<button class="text-gray-400 hover:text-white transition-colors">
+<span class="material-icons-round">medical_services</span>
+</button>
+<button class="text-gray-400 hover:text-white transition-colors">
+<span class="material-icons-round">settings</span>
+</button>
+</nav>
+<div class="fixed bottom-2 left-1/2 -translate-x-1/2 w-32 h-1.5 bg-gray-300 dark:bg-gray-700 rounded-full z-50"></div>
+</div>
+<button class="fixed top-4 right-4 w-10 h-10 bg-white dark:bg-navy-dark border border-gray-200 dark:border-gray-700 rounded-full flex items-center justify-center shadow-lg z-[100]" onclick="document.documentElement.classList.toggle('dark')">
+<span class="material-icons-round text-sm">dark_mode</span>
+</button>
+
+</body></html>

@@ -1,0 +1,81 @@
+{
+    "tech_stack": [
+        "TypeScript",
+        "React",
+        "Vite",
+        "Tailwind CSS",
+        "Supabase",
+        "Clerk",
+        "Playwright",
+        "PWA"
+    ],
+    "features": [
+        {
+            "name": "Authentication",
+            "description": "User authentication using Clerk with Supabase synchronization for profile data.",
+            "files": [
+                "src/services/auth.ts",
+                "screens/Login.tsx",
+                "screens/Register.tsx",
+                "src/components/auth/PrivateRoute.tsx"
+            ]
+        },
+        {
+            "name": "Gamification Engine",
+            "description": "System for tracking user points, levels, missions, and badges. Migrated to Supabase with RLS.",
+            "files": [
+                "src/services/gamification.ts",
+                "src/contexts/GamificationContext.tsx",
+                "screens/Gamification.tsx",
+                "src/components/gamification/GamificationWidget.tsx",
+                "supabase/migrations/20260126_gamification_setup.sql"
+            ]
+        },
+        {
+            "name": "Navigation & Layout",
+            "description": "Main application layout including responsive SideMenu and BottomNav with conditional rendering.",
+            "files": [
+                "App.tsx",
+                "src/components/layout/SideMenu.tsx",
+                "screens/Home.tsx"
+            ]
+        },
+        {
+            "name": "Pet Management",
+            "description": "CRUD operations for user pets, including photo avatars and digital ID cards.",
+            "files": [
+                "screens/MyPets.tsx",
+                "screens/PetDetails.tsx",
+                "screens/DigitalID.tsx",
+                "src/components/forms/PetForm.tsx",
+                "src/services/petService.ts"
+            ]
+        },
+        {
+            "name": "Health & Appointments",
+            "description": "Tracking vaccines and scheduling appointments with a glassmorphism modal ui.",
+            "files": [
+                "screens/Appointments.tsx",
+                "screens/Vaccines.tsx",
+                "src/components/forms/AppointmentForm.tsx",
+                "src/components/forms/VaccineForm.tsx"
+            ]
+        },
+        {
+            "name": "Adoption & Social",
+            "description": "Adoption listings and donation information for NGOs.",
+            "files": [
+                "screens/Adoption.tsx",
+                "screens/Donation.tsx"
+            ]
+        },
+        {
+            "name": "Offline Capabilities",
+            "description": "Local storage fallback and PWA service worker caching.",
+            "files": [
+                "src/services/offlineStorage.ts",
+                "vite.config.ts"
+            ]
+        }
+    ]
+}
